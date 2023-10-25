@@ -170,3 +170,11 @@ class ItemSerializer(serializers.ModelSerializer):
     def list(self, request):
         items = Item.objects.filter()
         return items
+
+
+class UploadFilesSerializer(serializers.ModelSerializer):
+    file = serializers.FileField()
+
+
+class SendEmailSerializer(serializers.ModelSerializer):
+    content = serializers.CharField()

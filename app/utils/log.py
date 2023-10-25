@@ -12,7 +12,7 @@ RESPONSE = "RESPONSE"
 def log(msg, type):
     now = datetime.now()
     current_time = now.strftime("%Y-%m-%d %H:%M:%S")
-    print(f"########## {current_time} {msg}")
+    print(f"########## {current_time} {type} {msg}")
 
     if not os.path.exists(LOG_DIR):
         os.mkdir(LOG_DIR)

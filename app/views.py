@@ -8,6 +8,8 @@ from rest_framework.filters import OrderingFilter
 from app.commons.customresponse import CustomResponse
 from app.commons.page import Page
 from app.utils.log import net_log, REQUEST
+from app.utils.s3 import upload_file
+from app.utils.msg_util import send_email
 from app.serializers import *
 from app.filters import *
 
@@ -131,3 +133,26 @@ class ItemListView(GenericAPIView):
         page = self.paginate_queryset(queryset=queryset)
         serializer = self.get_serializer(instance=page, many=True)
         return self.get_paginated_response(serializer.data)
+
+
+class UploadFilesView(GenericAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = UploadFilesSerializer
+    
+    def post(self, request):
+        file_obj = request.FILES.get("file")
+        url = upload_file(file_obj.name, file_obj)
+        return CustomResponse(data={"url":url}, code=200, msg="success", status=status.HTTP_200_OK)
+
+
+class SendEmailView(GenericAPIView):
+    permission_classes = [permissions.AllowAny]
+    serializer_class = SendEmailSerializer
+
+    def post(self, request):
+        net_log(request.data, REQUEST)
+        title = "test_title"
+        content = request.data.get("content")
+        recipient_list = ["recipient_list",]
+        send_email(title, content, recipient_list)
+        return CustomResponse(data=None, code=200, msg="success", status=status.HTTP_200_OK)

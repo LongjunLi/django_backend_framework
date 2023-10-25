@@ -78,3 +78,15 @@ class ItemDelete(models.Model):
 
     class Meta:
         db_table = 't_item_delete'
+
+
+class CountryCode(models.Model):
+    id = models.AutoField(primary_key=True)
+    country_name = models.CharField(max_length=255, blank=True, null=True)
+    country_code = models.CharField(max_length=255, blank=True, null=True)
+    calling_code = models.CharField(max_length=255, blank=True, null=True)
+    language_name = models.CharField(max_length=255, blank=True, null=True)
+    language_code = models.CharField(max_length=255, blank=True, null=True)
+
+    class Meta:
+        db_table = 't_country_code'
