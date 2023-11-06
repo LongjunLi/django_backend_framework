@@ -7,3 +7,4 @@ boto3==1.28.50
 openai==0.28.0
 twilio==8.9.0
 google-cloud-translate==2.0.1
+google-cloud-texttospeech==2.14.2
