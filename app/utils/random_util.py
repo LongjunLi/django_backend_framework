@@ -9,7 +9,7 @@ def generate_random_string(length):
 
 def generate_random_string_separately(length, sep_number):
     result = ""
-    for _ in range (sep_number):
+    for _ in range(sep_number):
         result = result + generate_random_string(length) + "-"
     return result[:-1]
 
@@ -20,6 +20,6 @@ def generate_random_string_with_category(length, category):
 
 def generate_random_string_separately_with_category(length, category, sep_number):
     result = category + "-"
-    for _ in range (sep_number):
+    for _ in range(sep_number):
         result = result + generate_random_string(length) + "-"
     return result[:-1]

@@ -135,14 +135,17 @@ class ItemListView(GenericAPIView):
         return self.get_paginated_response(serializer.data)
 
 
-class UploadFilesView(GenericAPIView):
+class UploadFileView(GenericAPIView):
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = UploadFilesSerializer
-    
+
     def post(self, request):
         file_obj = request.FILES.get("file")
         url = upload_file(file_obj.name, file_obj)
-        return CustomResponse(data={"url":url}, code=200, msg="success", status=status.HTTP_200_OK)
+        if url:
+            return CustomResponse(data={"url": url}, code=200, msg="success", status=status.HTTP_200_OK)
+        else:
+            return CustomResponse(data=None, code=200, msg="File uploading failed.", status=status.HTTP_200_OK)
 
 
 class SendEmailView(GenericAPIView):
@@ -154,5 +157,8 @@ class SendEmailView(GenericAPIView):
         title = "test_title"
         content = request.data.get("content")
         recipient_list = ["recipient_list",]
-        send_email(title, content, recipient_list)
-        return CustomResponse(data=None, code=200, msg="success", status=status.HTTP_200_OK)
+        res = send_email(title, content, recipient_list)
+        if res:
+            return CustomResponse(data=None, code=200, msg="success", status=status.HTTP_200_OK)
+        else:
+            return CustomResponse(data=None, code=400, msg="email send failed", status=status.HTTP_200_OK)

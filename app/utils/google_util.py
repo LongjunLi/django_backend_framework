@@ -6,6 +6,7 @@ from log import log
 from random_util import generate_random_string_with_category
 from s3 import upload_file
 
+# Use SSML to handle mixed-language TTS
 
 # secret = {"type": "service_account",
 #           "project_id": "YOUR_PROJECT_ID",

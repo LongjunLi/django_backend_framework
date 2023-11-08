@@ -14,6 +14,6 @@ urlpatterns = [
     path('apis/ItemUpdate/', ItemUpdateView.as_view()),
     path('apis/ItemDelete/', ItemDeleteView.as_view()),
     path('apis/ItemList/', ItemListView.as_view()),
-    path('apis/UploadFiles/', UploadFilesView.as_view()),
+    path('apis/UploadFile/', UploadFileView.as_view()),
     path('apis/SendEmail/', SendEmailView.as_view()),
 ]

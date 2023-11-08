@@ -23,7 +23,7 @@ class SigninSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
         token = super(SigninSerializer, cls).get_token(user)
- 
+
         token['username'] = user.username
         token['is_admin'] = user.is_admin
         token['is_active'] = user.is_active
@@ -69,7 +69,9 @@ class UserInfoSerializer(serializers.ModelSerializer):
             log("User info existed!", "UserInfoCreate")
             raise ParamsException({"custom_msg": "User info existed!"})
 
-        user_info = UserInfo.objects.create(user_id=request.user.id, firstname=firstname, lastname=lastname)
+        user_info = UserInfo.objects.create(user_id=request.user.id,
+                                            firstname=firstname,
+                                            lastname=lastname)
         user_info.save()
 
     def update(self, request):
@@ -81,7 +83,7 @@ class UserInfoSerializer(serializers.ModelSerializer):
         except:
             log("User info non-existed!", "UserInfoUpdate")
             raise ParamsException({"custom_msg": "User info non-existed!"})
-        
+
         user_info.firstname = firstname
         user_info.lastname = lastname
         user_info.save()
@@ -96,9 +98,9 @@ class UserInfoDeleteSerializer(serializers.ModelSerializer):
             log("User info non-existed!", "UserInfoDelete")
             raise ParamsException({"custom_msg": "User info non-existed!"})
         user_info_delete = UserInfoDelete.objects.create(user_id=user_info.user_id,
-                                                   user_info_id=user_info.id,
-                                                   firstname=user_info.firstname, 
-                                                   lastname=user_info.lastname)
+                                                         user_info_id=user_info.id,
+                                                         firstname=user_info.firstname,
+                                                         lastname=user_info.lastname)
         user_info_delete.save()
         user_info.delete()
 
@@ -114,7 +116,7 @@ class UserInfoGetSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserInfo
         fields = ("id", "user_id", "firstname", "lastname", "create_time", "update_time")
-    
+
     def list(self, request):
         try:
             user_info = UserInfo.objects.get(user_id=request.user.id)
@@ -152,7 +154,7 @@ class ItemSerializer(serializers.ModelSerializer):
 
         item.name = name
         item.save()
-    
+
     def delete(self, request):
         id = request.data.get("id")
 

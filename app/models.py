@@ -8,17 +8,17 @@ from django.utils import timezone
 class UserManager(BaseUserManager):
 
     def _create_user(self, username, password, **extra_fields):
-            if not username:
-                raise ValueError("Username cannot be empty!")
-            if not password:
-                raise ValueError("Password cannot be empty!")
-            user = self.model(username=username, **extra_fields)
-            user.set_password(password)
-            user.save(using=self._db)
+        if not username:
+            raise ValueError("Username cannot be empty!")
+        if not password:
+            raise ValueError("Password cannot be empty!")
+        user = self.model(username=username, **extra_fields)
+        user.set_password(password)
+        user.save(using=self._db)
 
     def create_user(self, username, password, **extra_fields):
         return self._create_user(username, password, **extra_fields)
- 
+
     def create_superuser(self, username, password, **extra_fields):
         return self._create_user(username, password, **extra_fields)
 
@@ -31,7 +31,7 @@ class User(AbstractBaseUser):
 
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = []
- 
+
     objects = UserManager()
 
 
