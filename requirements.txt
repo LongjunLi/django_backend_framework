@@ -4,7 +4,10 @@ djangorestframework==3.14.0
 djangorestframework-simplejwt==5.3.0
 django-filter==23.2
 boto3==1.28.50
-openai==0.28.0
+openai==1.2.0
 twilio==8.9.0
 google-cloud-translate==2.0.1
 google-cloud-texttospeech==2.14.2
+stream-chat==4.10.0
+qrcode==7.4.2
+opencv-python==4.8.1.78

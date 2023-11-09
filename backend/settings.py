@@ -79,13 +79,13 @@ WSGI_APPLICATION = "backend.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {  
-    'default': {  
-        'ENGINE': 'django.db.backends.mysql', 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
         "OPTIONS": {
             "read_default_file": "config/mysql.cnf",
         },
-    }  
+    }
 }
 
 
@@ -167,3 +167,6 @@ EMAIL_USE_TLS = True
 TWILIO_ACCOUNT_SID = 'YOUR_TWILIO_ACCOUNT_SID'
 TWILIO_AUTH_TOKEN = 'YOUR_TWILIO_AUTH_TOKEN'
 TWILIO_MESSAGING_SERVICE_SID = 'YOUR_TWILIO_MESSAGING_SERVICE_SID'
+
+GETSTREAM_API_KEY = "YOUR_GETSTREAM_API_KEY"
+GETSTREAM_API_SECRET = "YOUR_GETSTREAM_API_SECRET"

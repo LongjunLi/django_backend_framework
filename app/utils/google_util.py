@@ -2,9 +2,9 @@ from google.oauth2 import service_account
 from google.cloud import translate_v2 as translate
 from google.cloud import texttospeech
 
-from log import log
-from random_util import generate_random_string_with_category
-from s3 import upload_file
+from app.utils.log import log
+from app.utils.random_util import generate_random_string_with_category
+from app.utils.s3 import upload_file
 
 # Use SSML to handle mixed-language TTS
 
