@@ -41,7 +41,7 @@ def query_whisper(audio_url):
         return None
 
 
-def query_ttf(text):
+def query_tts(text):
     try:
         client = OpenAI(api_key=settings.OPENAI_API_KEY)
         model = "tts-1"
