@@ -64,7 +64,7 @@ user = YOUR_USER_NAME
 password = YOUR_PASSWORD
 ...
 ```
-Customize google configs in ./config/mysql.cnf
+Customize google configs in ./config/google.json
 ```bash
 ...
 "project_id": "YOUR_PROJECT_ID",
