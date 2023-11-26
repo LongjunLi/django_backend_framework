@@ -11,13 +11,13 @@ class CustomResponse(Response):
 
         if isinstance(data, Serializer):
             msg = (
-                'You passed a Serializer instance as data, but '
-                'probably meant to pass serialized `.data` or '
-                '`.error`. representation.'
+                "You passed a Serializer instance as data, but "
+                "probably meant to pass serialized \'.data\' or "
+                "\'.error\'. representation."
             )
             raise AssertionError(msg)
 
-        self.data = {'code': code, 'msg': msg, 'data': data}
+        self.data = {"code": code, "msg": msg, "data": data}
         self.data.update(kwargs)
         self.template_name = template_name
         self.exception = exception

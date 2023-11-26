@@ -44,7 +44,7 @@ def query_users(user_id_list):
             log(f"GetStaream Error: {res}", "query_users")
             log(f"Cannot query users: {user_id_list}", "query_users")
             return []
-        return res.get('users')
+        return res.get("users")
     except:
         log(f"Cannot query users: {user_id_list}", "query_users")
         return []
@@ -92,7 +92,7 @@ def query_channels(user_id_list):
             log(f"GetStaream Error: {res}", "query_channels")
             log(f"Cannot query channels: {user_id_list}", "query_channels")
             return []
-        return res.get('channels')
+        return res.get("channels")
     except:
         log(f"Cannot query channels: {user_id_list}", "query_channels")
         return []

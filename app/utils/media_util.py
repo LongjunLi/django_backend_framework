@@ -20,7 +20,7 @@ def transfer_media(input_file, output_file):
     try:
         if os.path.exists(output_file):
             os.remove(output_file)
-        subprocess.run(['ffmpeg', '-i', input_file, output_file])
+        subprocess.run(["ffmpeg", "-i", input_file, output_file])
     except:
         log(f"Cannot transfer media: {input_file}", "transfer_media")
 

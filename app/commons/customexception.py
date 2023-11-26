@@ -16,7 +16,7 @@ def custom_exception_handler(exc, context):
             custom_msg = None
         response.data.clear()
 
-        response.data['code'] = response.status_code
+        response.data["code"] = response.status_code
 
         if custom_msg is not None:
             response.data["msg"] = custom_msg
@@ -33,7 +33,7 @@ def custom_exception_handler(exc, context):
         else:
             response.data["msg"] = "other unknown errors"
 
-        response.data['data'] = None
+        response.data["data"] = None
         response.status_code = 200
 
     if response:

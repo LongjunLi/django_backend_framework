@@ -28,7 +28,7 @@ def download_to_file(file_url):
         if not os.path.exists(TEMP_DIR):
             os.mkdir(TEMP_DIR)
         filepath = TEMP_DIR + generate_random_string(10)
-        with open(filepath, 'wb') as f:
+        with open(filepath, "wb") as f:
             f.write(request.content)
         return filepath
     except:

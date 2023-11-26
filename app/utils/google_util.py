@@ -24,7 +24,7 @@ from app.utils.s3 import upload_file
 def translate_text(target, text):
     try:
         # credentials = service_account.Credentials.from_service_account_info(secret)c
-        credentials = service_account.Credentials.from_service_account_file('../config/google.json')
+        credentials = service_account.Credentials.from_service_account_file("../config/google.json")
         translate_client = translate.Client(credentials=credentials)
 
         if isinstance(text, bytes):
@@ -40,7 +40,7 @@ def translate_text(target, text):
 def detect_language(text):
     try:
         # credentials = service_account.Credentials.from_service_account_info(secret)
-        credentials = service_account.Credentials.from_service_account_file('../config/google.json')
+        credentials = service_account.Credentials.from_service_account_file("../config/google.json")
         detect_client = translate.Client(credentials=credentials)
 
         result = detect_client.detect_language(text)
@@ -54,7 +54,7 @@ def detect_language(text):
 def text_to_speech(text):
     try:
         # credentials = service_account.Credentials.from_service_account_info(secret)
-        credentials = service_account.Credentials.from_service_account_file('../config/google.json')
+        credentials = service_account.Credentials.from_service_account_file("../config/google.json")
         tts_client = texttospeech.TextToSpeechClient(credentials=credentials)
 
         synthesis_input = texttospeech.SynthesisInput(text=text)

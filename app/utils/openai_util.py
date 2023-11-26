@@ -16,7 +16,7 @@ def query_chatgpt(prompt):
         messages = [{"role": "user", "content": prompt}]
         # response = openai.ChatCompletion.create(model=model, messages=messages)
         response = client.chat.completions.create(model=model, messages=messages)
-        # return response['choices'][0]['message']['content']
+        # return response["choices"][0]["message"]["content"]
         return response.choices[0].message.content
     except:
         log(f"Cannot query chatgpt: {prompt}", "query_chatgpt")
@@ -34,7 +34,7 @@ def query_whisper(audio_url):
         buffer.name = "audio.mp4"
         # transcript = openai.Audio.transcribe(model=model, file=buffer, language=language_code)
         transcript = client.audio.transcriptions.create(model=model, file=buffer)
-        # return transcript['text']
+        # return transcript["text"]
         return transcript.text
     except:
         log(f"Cannot query whisper: {audio_url}", "query_whisper")
