@@ -1,6 +1,6 @@
 [client]
-database = YOUR_DATABASE
-user = YOUR_USER_NAME
-password = YOUR_PASSWORD
+database = "YOUR_DATABASE"
+user = "YOUR_USER_NAME"
+password = "YOUR_PASSWORD"
 host = "127.0.0.1"
 port = 3306

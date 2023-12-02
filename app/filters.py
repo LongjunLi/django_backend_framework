@@ -3,8 +3,8 @@ from app.models import *
 
 
 class ItemFilter(filters.FilterSet):
-    name = filters.CharFilter(field_name='name', lookup_expr='icontains')
+    name = filters.CharFilter(field_name="name", lookup_expr="icontains")
 
     class Meta:
         model = Item
-        fields = ('name',)
+        fields = ("name",)

@@ -29,7 +29,7 @@ class User(AbstractBaseUser):
     is_active = models.BooleanField(default=True)
     create_time = models.DateTimeField(default=timezone.now)
 
-    USERNAME_FIELD = 'username'
+    USERNAME_FIELD = "username"
     REQUIRED_FIELDS = []
 
     objects = UserManager()
@@ -44,7 +44,7 @@ class UserInfo(models.Model):
     update_time = models.DateTimeField(auto_now=True)
 
     class Meta:
-        db_table = 't_user_info'
+        db_table = "t_user_info"
 
 
 class UserInfoDelete(models.Model):
@@ -56,7 +56,7 @@ class UserInfoDelete(models.Model):
     create_time = models.DateTimeField(default=timezone.now)
 
     class Meta:
-        db_table = 't_user_info_delete'
+        db_table = "t_user_info_delete"
 
 
 class Item(models.Model):
@@ -66,7 +66,7 @@ class Item(models.Model):
     update_time = models.DateTimeField(auto_now=True)
 
     class Meta:
-        db_table = 't_item'
+        db_table = "t_item"
 
 
 class ItemDelete(models.Model):
@@ -77,7 +77,7 @@ class ItemDelete(models.Model):
     create_time = models.DateTimeField(default=timezone.now)
 
     class Meta:
-        db_table = 't_item_delete'
+        db_table = "t_item_delete"
 
 
 class CountryCode(models.Model):
@@ -89,4 +89,4 @@ class CountryCode(models.Model):
     language_code = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
-        db_table = 't_country_code'
+        db_table = "t_country_code"

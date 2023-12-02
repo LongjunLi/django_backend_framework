@@ -40,9 +40,9 @@ INSTALLED_APPS = [
     # "django.contrib.messages",
     # "django.contrib.staticfiles",
     "app",
-    'rest_framework',
-    'rest_framework_simplejwt',
-    'django_filters',
+    "rest_framework",
+    "rest_framework_simplejwt",
+    "django_filters",
 ]
 
 MIDDLEWARE = [
@@ -80,8 +80,8 @@ WSGI_APPLICATION = "backend.wsgi.application"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
         "OPTIONS": {
             "read_default_file": "config/mysql.cnf",
         },
@@ -133,40 +133,40 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL = "app.User"
 
 REST_FRAMEWORK = {
-    'DEFAULT_FILTER_BACKENDS': (
-        'django_filters.rest_framework.DjangoFilterBackend',
-        'rest_framework.filters.OrderingFilter'
+    "DEFAULT_FILTER_BACKENDS": (
+        "django_filters.rest_framework.DjangoFilterBackend",
+        "rest_framework.filters.OrderingFilter"
     ),
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
     ],
-    'EXCEPTION_HANDLER': 'app.commons.customexception.custom_exception_handler',
+    "EXCEPTION_HANDLER": "app.commons.customexception.custom_exception_handler",
 }
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(days=365),
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=365),
 }
 
-AUTHENTICATION_BACKENDS = ('app.serializers.CustomBackend',)
+AUTHENTICATION_BACKENDS = ("app.serializers.CustomBackend",)
 
-AWS_ACCESS_KEY_ID = 'YOUR_AWS_ACCESS_KEY_ID'
-AWS_SECRET_ACCESS_KEY = 'YOUR_AWS_SECRET_ACCESS_KEY'
-AWS_S3_REGION_NAME = 'YOUR_AWS_S3_REGION_NAME'
-AWS_STORAGE_BUCKET_NAME = 'YOUR_AWS_STORAGE_BUCKET_NAME'
-AWS_UPLOAD_FOLDER = 'YOUR_AWS_UPLOAD_FOLDER'
+AWS_ACCESS_KEY_ID = "YOUR_AWS_ACCESS_KEY_ID"
+AWS_SECRET_ACCESS_KEY = "YOUR_AWS_SECRET_ACCESS_KEY"
+AWS_S3_REGION_NAME = "YOUR_AWS_S3_REGION_NAME"
+AWS_STORAGE_BUCKET_NAME = "YOUR_AWS_STORAGE_BUCKET_NAME"
+AWS_UPLOAD_FOLDER = "YOUR_AWS_UPLOAD_FOLDER"
 
-OPENAI_API_KEY = 'YOUR_OPENAI_API_KEY'
+OPENAI_API_KEY = "YOUR_OPENAI_API_KEY"
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'YOUR_EMAIL_HOST_USER'
-EMAIL_HOST_PASSWORD = 'YOUR_EMAIL_HOST_PASSWORD'
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = "YOUR_EMAIL_HOST_USER"
+EMAIL_HOST_PASSWORD = "YOUR_EMAIL_HOST_PASSWORD"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-TWILIO_ACCOUNT_SID = 'YOUR_TWILIO_ACCOUNT_SID'
-TWILIO_AUTH_TOKEN = 'YOUR_TWILIO_AUTH_TOKEN'
-TWILIO_MESSAGING_SERVICE_SID = 'YOUR_TWILIO_MESSAGING_SERVICE_SID'
+TWILIO_ACCOUNT_SID = "YOUR_TWILIO_ACCOUNT_SID"
+TWILIO_AUTH_TOKEN = "YOUR_TWILIO_AUTH_TOKEN"
+TWILIO_MESSAGING_SERVICE_SID = "YOUR_TWILIO_MESSAGING_SERVICE_SID"
 
 GETSTREAM_API_KEY = "YOUR_GETSTREAM_API_KEY"
 GETSTREAM_API_SECRET = "YOUR_GETSTREAM_API_SECRET"

@@ -24,9 +24,9 @@ class SigninSerializer(TokenObtainPairSerializer):
     def get_token(cls, user):
         token = super(SigninSerializer, cls).get_token(user)
 
-        token['username'] = user.username
-        token['is_admin'] = user.is_admin
-        token['is_active'] = user.is_active
+        token["username"] = user.username
+        token["is_admin"] = user.is_admin
+        token["is_active"] = user.is_active
         return token
 
 

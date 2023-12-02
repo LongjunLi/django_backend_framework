@@ -20,11 +20,11 @@ class RegisterView(GenericAPIView):
 
     def post(self, request):
         net_log(request.data, REQUEST)
-        username = request.data.get('username')
+        username = request.data.get("username")
         if not username:
             return CustomResponse(data=None, code=400, msg="Username cannot be empty!", status=status.HTTP_200_OK)
 
-        password = request.data.get('password')
+        password = request.data.get("password")
         if not password:
             return CustomResponse(data=None, code=400, msg="Password cannot be empty!", status=status.HTTP_200_OK)
 
@@ -41,7 +41,7 @@ class SigninView(TokenObtainPairView):
         net_log(request.data, REQUEST)
 
         if response.status_code == 200:
-            data = {'token': response.data['access']}
+            data = {"token": response.data["access"]}
             return CustomResponse(data=data, code=200, msg="success", status=status.HTTP_200_OK)
 
         return response
