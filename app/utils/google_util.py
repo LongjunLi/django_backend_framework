@@ -23,7 +23,7 @@ from app.utils.s3 import upload_file
 
 def translate_text(target, text):
     try:
-        # credentials = service_account.Credentials.from_service_account_info(secret)c
+        # credentials = service_account.Credentials.from_service_account_info(secret)
         credentials = service_account.Credentials.from_service_account_file("../config/google.json")
         translate_client = translate.Client(credentials=credentials)
 
