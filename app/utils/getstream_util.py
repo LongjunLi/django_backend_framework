@@ -8,8 +8,7 @@ from app.utils.log import log
 
 def create_users(dict_list):
     try:
-        server_client = StreamChat(
-            api_key=settings.GETSTREAM_API_KEY, api_secret=settings.GETSTREAM_API_SECRET)
+        server_client = StreamChat(api_key=settings.GETSTREAM_API_KEY, api_secret=settings.GETSTREAM_API_SECRET)
         dict_list = [{**d, "role": "user"} for d in dict_list]
         res = server_client.upsert_users(dict_list)
         if res.status_code() != 201:
@@ -23,8 +22,7 @@ def create_users(dict_list):
 
 def update_users(dict_list):
     try:
-        server_client = StreamChat(
-            api_key=settings.GETSTREAM_API_KEY, api_secret=settings.GETSTREAM_API_SECRET)
+        server_client = StreamChat(api_key=settings.GETSTREAM_API_KEY, api_secret=settings.GETSTREAM_API_SECRET)
         res = server_client.update_users_partial(dict_list)
         if res.status_code() != 200:
             log(f"GetStaream Error: {res}", "update_users")
@@ -37,8 +35,7 @@ def update_users(dict_list):
 
 def query_users(user_id_list):
     try:
-        server_client = StreamChat(
-            api_key=settings.GETSTREAM_API_KEY, api_secret=settings.GETSTREAM_API_SECRET)
+        server_client = StreamChat(api_key=settings.GETSTREAM_API_KEY, api_secret=settings.GETSTREAM_API_SECRET)
         res = server_client.query_users({"id": {"$in": user_id_list}})
         if res.status_code() != 200:
             log(f"GetStaream Error: {res}", "query_users")
@@ -54,10 +51,8 @@ def query_users(user_id_list):
 
 def create_channel(channel_type, channel_id, dict_data, user_id):
     try:
-        server_client = StreamChat(
-            api_key=settings.GETSTREAM_API_KEY, api_secret=settings.GETSTREAM_API_SECRET)
-        channel = server_client.channel(
-            channel_type, channel_id, data=dict_data)
+        server_client = StreamChat(api_key=settings.GETSTREAM_API_KEY, api_secret=settings.GETSTREAM_API_SECRET)
+        channel = server_client.channel(channel_type, channel_id, data=dict_data)
         res = channel.create(user_id)
         if res.status_code() != 201:
             log(f"GetStaream Error: {res}", "create_channel")
@@ -70,8 +65,7 @@ def create_channel(channel_type, channel_id, dict_data, user_id):
 
 def update_channel(channel_type, channel_id, dict_data):
     try:
-        server_client = StreamChat(
-            api_key=settings.GETSTREAM_API_KEY, api_secret=settings.GETSTREAM_API_SECRET)
+        server_client = StreamChat(api_key=settings.GETSTREAM_API_KEY, api_secret=settings.GETSTREAM_API_SECRET)
         channel = server_client.channel(channel_type, channel_id)
         res = channel.update_partial(to_set=dict_data)
         if res.status_code() != 200:
@@ -85,8 +79,7 @@ def update_channel(channel_type, channel_id, dict_data):
 
 def query_channels(user_id_list):
     try:
-        server_client = StreamChat(
-            api_key=settings.GETSTREAM_API_KEY, api_secret=settings.GETSTREAM_API_SECRET)
+        server_client = StreamChat(api_key=settings.GETSTREAM_API_KEY, api_secret=settings.GETSTREAM_API_SECRET)
         res = server_client.query_channels({"members": {"$in": user_id_list}})
         if res.status_code() != 201:
             log(f"GetStaream Error: {res}", "query_channels")
@@ -102,8 +95,7 @@ def query_channels(user_id_list):
 
 def add_members(channel_type, channel_id, user_id_list):
     try:
-        server_client = StreamChat(
-            api_key=settings.GETSTREAM_API_KEY, api_secret=settings.GETSTREAM_API_SECRET)
+        server_client = StreamChat(api_key=settings.GETSTREAM_API_KEY, api_secret=settings.GETSTREAM_API_SECRET)
         channel = server_client.channel(channel_type, channel_id)
         res = channel.add_members(user_id_list)
         if res.status_code() != 201:
@@ -117,8 +109,7 @@ def add_members(channel_type, channel_id, user_id_list):
 
 def remove_members(channel_type, channel_id, user_id_list):
     try:
-        server_client = StreamChat(
-            api_key=settings.GETSTREAM_API_KEY, api_secret=settings.GETSTREAM_API_SECRET)
+        server_client = StreamChat(api_key=settings.GETSTREAM_API_KEY, api_secret=settings.GETSTREAM_API_SECRET)
         channel = server_client.channel(channel_type, channel_id)
         res = channel.remove_members(user_id_list)
         if res.status_code() != 201:
@@ -132,11 +123,9 @@ def remove_members(channel_type, channel_id, user_id_list):
 
 def query_members(channel_type, channel_id, user_id_list):
     try:
-        server_client = StreamChat(
-            api_key=settings.GETSTREAM_API_KEY, api_secret=settings.GETSTREAM_API_SECRET)
+        server_client = StreamChat(api_key=settings.GETSTREAM_API_KEY, api_secret=settings.GETSTREAM_API_SECRET)
         channel = server_client.channel(channel_type, channel_id)
-        res = channel.query_members(
-            filter_conditions={"id": {"$in": user_id_list}})
+        res = channel.query_members(filter_conditions={"id": {"$in": user_id_list}})
         return res
     except:
         log(f"Cannot query members: {user_id_list}", "query_members")
@@ -147,8 +136,7 @@ def query_members(channel_type, channel_id, user_id_list):
 
 def send_message(channel_type, channel_id, context, user_id):
     try:
-        server_client = StreamChat(
-            api_key=settings.GETSTREAM_API_KEY, api_secret=settings.GETSTREAM_API_SECRET)
+        server_client = StreamChat(api_key=settings.GETSTREAM_API_KEY, api_secret=settings.GETSTREAM_API_SECRET)
         channel = server_client.channel(channel_type, channel_id)
         res = channel.send_message(context, user_id)
         if res.status_code() != 201:
@@ -162,10 +150,8 @@ def send_message(channel_type, channel_id, context, user_id):
 
 def update_message(message_id, context, user_id):
     try:
-        server_client = StreamChat(
-            api_key=settings.GETSTREAM_API_KEY, api_secret=settings.GETSTREAM_API_SECRET)
-        res = server_client.update_message_partial(
-            message_id, {"set": context}, user_id)
+        server_client = StreamChat(api_key=settings.GETSTREAM_API_KEY, api_secret=settings.GETSTREAM_API_SECRET)
+        res = server_client.update_message_partial(message_id, {"set": context}, user_id)
         if res.status_code() != 201:
             log(f"GetStaream Error: {res}", "update_message")
             log(f"Cannot update message: {user_id}", "update_message")
@@ -177,8 +163,7 @@ def update_message(message_id, context, user_id):
 
 def send_channel_event(channel_type, channel_id, context, user_id):
     try:
-        server_client = StreamChat(
-            api_key=settings.GETSTREAM_API_KEY, api_secret=settings.GETSTREAM_API_SECRET)
+        server_client = StreamChat(api_key=settings.GETSTREAM_API_KEY, api_secret=settings.GETSTREAM_API_SECRET)
         channel = server_client.channel(channel_type, channel_id)
         res = channel.send_event(context, user_id)
         if res.status_code() != 201:
@@ -192,8 +177,7 @@ def send_channel_event(channel_type, channel_id, context, user_id):
 
 def send_user_event(user_id, context):
     try:
-        server_client = StreamChat(
-            api_key=settings.GETSTREAM_API_KEY, api_secret=settings.GETSTREAM_API_SECRET)
+        server_client = StreamChat(api_key=settings.GETSTREAM_API_KEY, api_secret=settings.GETSTREAM_API_SECRET)
         res = server_client.send_user_custom_event(user_id, context)
         if res.status_code() != 201:
             log(f"GetStaream Error: {res}", "send_user_event")
