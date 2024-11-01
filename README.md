@@ -77,8 +77,8 @@ Customize google configs in ./config/google.json
 ## Debug
 Initialize database:
 
-    python manager.py makemigrations.py
-    python manager.py migrate.py
+    python manage.py makemigrations.py
+    python manage.py migrate.py
 Run:
 
-    python manager.py runserver
+    python manage.py runserver
